@@ -42,7 +42,11 @@ Etape 1 : Créer la page de présentation des travaux depuis le back-end
 - J'ai utilisé fetch et récupéré les données provenant du back-end, la galerie est fonctionnelle affichée avec la liste des travaux provenant du back-end.
 - J'ai fais appel à l’API avec fetch afin de récupérer dynamiquement les projets de l’architecte. 
 - J'ai utilisé JavaScript pour ajouter à la galerie les travaux de l’architecte que vous avez récupéré. 
-- J'ai supprimé du HTML les travaux qui étaient présents. Il ne doit vous rester que le contenu que vous avez ajouté dynamiquement grâce à JavaScript.
+- J'ai supprimé du HTML les travaux qui étaient présents. Il ne rester que le contenu que vous avez ajouté dynamiquement grâce à JavaScript.
+
+1.2  Réalisation du filtre des travaux : Ajout des filtres pour afficher les travaux par catégorie :
+
+- 
 
 
 
