@@ -125,18 +125,31 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+
+/* Définition des styles pour la galerie d'images */
 .gallery {
-	width: 100%;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
+    /* La galerie occupera toute la largeur disponible */
+    width: 100%;
+    /* Utilisation de la mise en page en grille */
+    display: grid;
+    /* Définition de trois colonnes égales */
+    grid-template-columns: 1fr 1fr 1fr;
+    /* Espacement horizontal entre les éléments de la grille */
+    grid-column-gap: 20px;
+    /* Espacement vertical entre les éléments de la grille */
+    grid-row-gap: 20px;
 }
 
+/* Les images à l'intérieur de la galerie occuperont toute la largeur disponible */
 .gallery img {
-	width: 100%;
-
+    width: 100%;
 }
+
+
+
+
+
 #contact {
 	width: 50%;
 margin: auto;
@@ -168,6 +181,44 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
+
+
+
+
+/* CSS #portfolio filters */
+
+.filters {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 50px 0;
+}
+
+.filters-design {
+	margin-left: 10px;
+	border: 1px solid #1D6154;
+    border-radius: 60px;
+	font-size: 1.15em;
+	color: #1D6154;
+	background-color: rgb(246, 246, 235);
+	padding: 7px 15px;
+}
+
+.filter-active {
+	color: #FFFFFF;
+	background-color: #1D6154; /* Ajout de la couleur de fond gris */
+}
+
+.filter-all {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+
+
+
+
 
 input[type="submit"]{
 	font-family: 'Syne';
