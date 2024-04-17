@@ -46,7 +46,8 @@ Etape 1 : Créer la page de présentation des travaux depuis le back-end
 
 1.2  Réalisation du filtre des travaux : Ajout des filtres pour afficher les travaux par catégorie :
 
-- 
+- J'ai créer la possibilité de filtrer la galerie par catégorie de projet, à l’aide d’un “menu de catégories” qui aura été généré dynamiquement.
+- Il est important de garder une option de menu permettant d’afficher tous les travaux, comme par défaut.
 
 
 
