@@ -41,66 +41,67 @@ fetch("http://localhost:5678/api/works")
 
 
 
-// Ajout des filtres de catégories pour filtrer les œuvres dans la galerie
-// Récupération des catégories existantes depuis l'API
-fetch("http://localhost:5678/api/categories")
-// Si la requête réussit, convertit la réponse en JSON
-.then(function(response) {
-    // Vérification de la réponse
-    if(response.ok) {
-        // Conversion de la réponse en JSON
-        return response.json();
-    }
-})
-// Traitement des données des catégories
-.then(function(data) {
-    // Récupération des données des catégories
-    let categories = data;
-    // Ajout de la catégorie "Tous" au début de la liste des catégories
+
+
+
+
+
+// Fonction pour récupérer les catégories depuis l'API
+function fetchCategories() {
+    // Effectue une requête pour récupérer les catégories depuis l'API
+    return fetch("http://localhost:5678/api/categories")
+        // Vérifie si la réponse est OK et convertit-la en JSON
+        .then(response => response.ok ? response.json() : Promise.reject("Erreur lors de la récupération des catégories"));
+}
+
+// Fonction pour ajouter la catégorie "Tous" et afficher les boutons de filtre
+function displayCategories(categories) {
+    // Ajoute la catégorie "Tous" au début de la liste des catégories
     categories.unshift({id: 0, name: 'Tous'});
-    // Affichage des catégories dans la console
+    // Affiche les catégories dans la console
     console.log(categories);
-    // Boucle sur chaque catégorie
-    categories.forEach((category, index) => {
-        // Création d'un bouton pour filtrer les œuvres par catégorie
-        let myButton = document.createElement('button');
-        // Ajout de classes CSS au bouton
-        myButton.classList.add('work-filter');
-        myButton.classList.add('filters-design');
-        // Si la catégorie est "Tous", ajoute des classes supplémentaires
-        if(category.id === 0) myButton.classList.add('filter-active', 'filter-all');
-        // Attribution de l'identifiant de la catégorie au bouton en tant qu'attribut de données
-        myButton.setAttribute('data-filter', category.id);
-        // Définition du texte du bouton avec le nom de la catégorie
+    // Crée un bouton pour chaque catégorie
+    categories.forEach(category => {
+        const myButton = document.createElement('button');
+        // Ajoute les classes CSS au bouton en fonction de la catégorie
+        myButton.className = `work-filter filters-design${category.id === 0 ? ' filter-active' : ''}`;
+        // Définit le texte du bouton avec le nom de la catégorie
         myButton.textContent = category.name;
-        // Ajout du bouton à la section existante des filtres
+        // Définit l'attribut de données pour stocker l'identifiant de la catégorie
+        myButton.setAttribute('data-filter', category.id);
+        // Ajoute le bouton à la section des filtres
         document.querySelector("div.filters").appendChild(myButton);
-        // Gestion de l'événement de clic sur le bouton pour filtrer les œuvres
-        myButton.addEventListener('click', function(event) {
-            event.preventDefault();
-            // Désélectionne tous les autres boutons de filtre
-            document.querySelectorAll('.work-filter').forEach((workFilter) => {
-                workFilter.classList.remove('filter-active');
-            });
-            // Sélectionne le bouton de filtre cliqué
-            event.target.classList.add('filter-active');
-            // Récupération de l'identifiant de la catégorie associée au bouton
-            let categoryId = myButton.getAttribute('data-filter');
-            // Cache toutes les œuvres
-            document.querySelectorAll('.work-item').forEach(workItem => {
-                workItem.style.display = 'none';
-            });
-            // Affiche seulement les œuvres de la catégorie sélectionnée
-            document.querySelectorAll(`.work-item.category-id-${categoryId}`).forEach(workItem => {
-                workItem.style.display = 'block';
-            });
-        });
+        // Ajoute un gestionnaire d'événement de clic pour filtrer les œuvres par catégorie
+        myButton.addEventListener('click', filterWorks);
     });
-})
-// Gestion des erreurs lors de la récupération des catégories
-.catch(function(err) {
-    console.log(err);
-});
+}
+
+// Fonction pour filtrer les œuvres par catégorie lorsqu'un bouton est cliqué
+function filterWorks(event) {
+    // Empêche le comportement par défaut du bouton
+    event.preventDefault();
+    // Désélectionne tous les autres boutons de filtre et sélectionne le bouton cliqué
+    document.querySelectorAll('.work-filter').forEach(workFilter => workFilter.classList.remove('filter-active'));
+    event.target.classList.add('filter-active');
+    // Récupère l'identifiant de la catégorie associée au bouton cliqué
+    const categoryId = event.target.getAttribute('data-filter');
+    // Cache toutes les œuvres
+    document.querySelectorAll('.work-item').forEach(workItem => workItem.style.display = 'none');
+    // Affiche seulement les œuvres de la catégorie sélectionnée
+    document.querySelectorAll(`.work-item.category-id-${categoryId}`).forEach(workItem => workItem.style.display = 'block');
+}
+
+// Appel de la fonction fetchCategories pour récupérer les catégories depuis l'API
+fetchCategories()
+    // Une fois les catégories récupérées avec succès, appelle displayCategories pour les afficher
+    .then(displayCategories)
+    // Gère les erreurs lors de la récupération des catégories
+    .catch(err => console.log(err));
+
+
+
+
+
 
 
 
