@@ -51,6 +51,14 @@ Etape 1 : Créer la page de présentation des travaux depuis le back-end
 
 
 
+Etape 2 : Codage de la page de connexion 
+
+Étape 2.1 : Intégration du design de la page de formulaire
+
+Étape 2.2 : Authentification de l’utilisateur
+
+
+
 
   
 
