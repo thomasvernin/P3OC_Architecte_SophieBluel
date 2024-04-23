@@ -314,57 +314,88 @@ input[type="submit"]:active {
 
 
 
-/*Login page*/
 
 
-.typography-for-login-in-user-page {
-	font-weight: 600; /* Définit le poids de la police à 600 (gras) */
+
+
+
+
+
+
+
+/* STYLE LOGIN.HTML */
+
+#login {
+  margin: 0 auto;
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.user-login-formulary form {
-	display: flex; /* Utilise le modèle de boîte flexible */
-	flex-direction: column; /* Aligne les éléments en colonne */
-	text-align: left; /* Aligne le texte à gauche */
+#login form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 18px;
+  width: 25%;
+
 }
 
-.user-login-formulary {
-	width: 30%; /* Définit la largeur à 50% de son conteneur parent */
-	margin: auto; /* Centre le formulaire horizontalement */
-	padding: 140px 170px 330px 170px; /* Définit les marges intérieures dans l'ordre haut, droite, bas, gauche */
+#login label {
+  margin-top: 25px;
 }
 
-.user-login-formulary h2 {
-	text-align: center; /* Centre le texte */
+#login input {
+  height: 45px;
+  background: #ffffff;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  border: none;
 }
 
-.space-between-label-and-input-in-user-login-formulary {
-	padding-bottom: 5px; /* Ajoute un espace en bas de 5px */
-	padding-top: 30px; /* Ajoute un espace en haut de 30px */
+#login button {
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+  font-size: 1em;
+  height: 2.5em;
+  background-color: #1d6154;
+  width: 48%;
+  text-align: center;
+  border-radius: 60px;
+  cursor: pointer;
+  margin: 37px auto 0 auto;
 }
 
-.user-login-formulary input {
-	height: 50px; /* Définit la hauteur des champs de saisie à 50px */
-	border: none; /* Supprime les bordures */
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09); /* Ajoute une ombre à la boîte */
-	
+#login button:hover {
+  background-color: #1d6154;
+  border: 1px solid #1d6154;
+  color: #ffffff;
 }
 
-.user-login-formulary input[type="submit"] {
-	margin: 40px auto 30px; /* Marge supérieure de 40px, marge inférieure de 30px, centré horizontalement */
-	height: 36px; /* Définit la hauteur du bouton de soumission */
-	display: block; /* Affiche le bouton en tant que bloc */
-	border: none; /* Supprime les bordures */
-	color: #FFFFFF; /* Couleur du texte en blanc */
-    border-radius: 60px; /* Ajoute une bordure arrondie */
-	font-size: 1em; /* Définit la taille de la police à 1em */
-	padding: 10px 39px; /* Définit les marges intérieures du bouton */
-	min-width: 180px; /* Définit la largeur minimale à 180px */
+#login a {
+  color: #000000;
 }
 
-.user-login-formulary a {
-	margin: auto; /* Centre le lien horizontalement */
-	text-decoration: underline; /* Souligne le lien */
+.error-message {
+  padding: 10px 0 20px 0;
+  color: #d65353;
+  text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -379,3 +410,18 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
