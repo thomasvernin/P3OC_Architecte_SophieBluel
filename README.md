@@ -96,7 +96,7 @@ Etape 2 : CODAGE DE LA PAGE DE CONNEXION
 
 
 
-Étape 4 : Vérification de l'enssemble du projet
+Étape 4 : VERIFICATION DE L'ENSSEMBLE DU PROJET 
 - Le projet est testé et validé prêt pour la soutenance.
 - J'ai testé mon code en me posant les questions suivantes : 
           Comment se comportent mes formulaires si j’entre des données erronées ? 
