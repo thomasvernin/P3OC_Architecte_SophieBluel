@@ -1,17 +1,24 @@
-// on récupère le form
+// Récupération du form
 const form = document.getElementById("form");
-//on récupère le input 'email'
+// Récupération du input 'email'
 const email = document.getElementById("email");
-//on récupère le input 'password'
+// Récupération du input 'password'
 const password = document.getElementById("password");
-//on récupère le span error-message
+// Récupération du span error-message
 const error = document.querySelector(".error-message");
 error.innerText = "";
+
+
+
+
 
 // Fonction redirection
 function goHome() {
   document.location.href = "./index.html";
 }
+
+
+
 
 // On execute la fonction lorsque le form est soumis
 form.addEventListener("submit", function (event) {
@@ -46,7 +53,7 @@ form.addEventListener("submit", function (event) {
         error.innerText = "Utilisateur inconnu";
       }
     })
-    //on recupere le token dans les donnees du json, on le stock pui on redirige
+    //on recupere le token dans les donnees du json, on le stock puis on le redirige
     .then((data) => {
       sessionStorage.setItem("token", data.token);
       goHome();
@@ -55,6 +62,11 @@ form.addEventListener("submit", function (event) {
       console.log(error);
     });
 });
+
+
+
+
+
 
 
 

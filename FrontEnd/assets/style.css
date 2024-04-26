@@ -3,98 +3,181 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li, 
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit; /* Utilise la police héritée */
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
-
-
-
-/* Réinitialisation du rôle d'affichage HTML5 pour les anciens navigateurs */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-
-
-
-
-}
-/*css suplémentaire pour le Header, Body, h1, h2*/
-
-body {
-	max-width: 1140px;
-	margin:auto;
-	font-family: 'Work Sans' ;
-	font-size: 14px;
-}
-header {
-	display: flex;
-	justify-content: space-between;
-	margin: 50px 0
-}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
 section {
-	margin: 50px 0
+  display: block;
 }
 
-h1{
-	display: flex;
-	flex-direction: column;
-	font-family: 'Syne';
-	font-size: 22px;
-	font-weight: 800;
-	color: #B1663C
+body {
+  line-height: 1;
+  background: #fffef8;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/** end reset css **/
+body {
+  margin: auto;
+  font-family: "Work Sans";
+  font-size: 14px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px auto;
+  max-width: 1140px;
+}
+
+main {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+section {
+  margin: 50px 0;
+}
+
+h1 {
+  display: flex;
+  flex-direction: column;
+  font-family: "Syne";
+  font-size: 22px;
+  font-weight: 800;
+  color: #b1663c;
 }
 
 h1 > span {
-	font-family: 'Work Sans';
-	font-size:10px;
-	letter-spacing: 0.1em;
-;
+  font-family: "Work Sans";
+  font-size: 10px;
+  letter-spacing: 0.1em;
 }
 
-h2{
-	font-family: 'Syne';
-	font-weight: 700;
-	margin-top: 150px ;
-	font-size: 30px;
-	color: #1D6154
-	
-	
+h2 {
+  font-family: "Syne";
+  font-weight: 700;
+  font-size: 30px;
+  color: #1d6154;
 }
 
 
@@ -102,36 +185,32 @@ h2{
 
 
 
-/*Barre de navigation*/ 
 
 nav ul {
-	display: flex;
-	align-items: center;
-	list-style-type: none;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
 
 }
 nav li {
-	padding: 0 20px;
-	font-size: 1.2em;
-	
+    padding: 0 20px;
+    font-size: 1.2em;
+    
 }
-
 
 li:hover {
-	color: black;
+    color: black;
 }
-
 
 li a:hover, .user-login-formulary a:hover, #top-bar a:hover, a:hover,
 .update-btn:hover {
-	color: black;
-	font-weight: bold; /* Le texte devient en gras lors du survol */
+    color: black;
+    font-weight: bold; /* Le texte devient en gras lors du survol */
 }
 
-
 a {
-	text-decoration: none;
-	color: #000000;
+    text-decoration: none;
+    color: #000000;
 }
 
 .instagram-icon {
@@ -144,182 +223,166 @@ a {
 
 
 
-
-/*Section Id introduction et Id Portfolio*/
-
-
 #introduction {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
+
 #introduction figure {
-	flex: 1
+  flex: 1;
 }
 
 #introduction img {
-	display: block;
-	margin: auto;
-	width: 80%;
-	margin-top: 150px; /* Ajoute de l'espace en haut de la classe */
+  display: block;
+  margin: auto;
+  width: 80%;
+  margin-top: 100px; /* Ajoute de l'espace en haut de la classe */
 }
 
 #introduction article {
-	flex: 1
+  flex: 1;
 }
+
 #introduction h2 {
-	margin-bottom: 1em;
-	
+  margin-bottom: 1em;
+  margin-top: 70px; /* Ajoute de l'espace en haut de la classe */
 }
 
 #introduction p {
-	margin-bottom: 0.5em;
-	margin-right: 50px; /* Réduit la marge à droite */
+  margin-bottom: 0.5em;
+  margin-right: 50px; /* Réduit la marge à droite */
 }
+
+
+
+
+/** PORTFOLIO STYLES **/
+
 #portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
+  text-align: center;
+  margin-top: 100px; /* Ajoute de l'espace en haut de la classe */
 }
 
-
-
-
-
-
-/* CSS #portfolio filters */
-
-.filters {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	padding: 50px 0;
+.filters-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 50px 0;
 }
 
-.filters-design {
-	margin-left: 10px;
-	border: 1px solid #1D6154;
-    border-radius: 60px;
-	font-size: 1.15em;
-	color: #1D6154;
-	background-color: rgb(246, 246, 235);
-	padding: 7px 15px;
-	font-family: 'Syne';
+button {
+  height: 37px;
+  min-width: 100px;
+  padding: 0 10px;
+  border-radius: 60px;
+  border: 1px solid #1d6154;
+  background-color: #ffffff;
+  color: #1d6154;
+  font-family: "Syne";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
 }
 
-.filter-active {
-	color: #FFFFFF;
-	background-color: #1D6154; /* Ajout de la couleur de fond gris */
-	cursor: pointer; /* Change le curseur en une main */
+button:hover {
+  border: 1px solid #b1663c;
+  color: #b1663c;
+  transition: 0.5s ease;
+  cursor: pointer;
 }
 
-.filter-all {
-	padding-left: 25px;
-	padding-right: 25px;
+.is-active {
+  background-color: #1d6154;
+  color: #ffffff;
 }
 
+.is-active:hover {
+  background-color: #1d6154;
+  border: 1px solid #1d6154;
+  color: #ffffff;
+}
 
-
-
-
-
-
-
-
-/* La galerie d'images */
 .gallery {
-    /* La galerie occupera toute la largeur disponible */
-    width: 90%;
-    /* Utilisation de la mise en page en grille */
-    display: grid;
-    /* Définition de trois colonnes égales */
-    grid-template-columns: 1fr 1fr 1fr;
-    /* Espacement horizontal entre les éléments de la grille */
-    grid-column-gap: 20px;
-    /* Espacement vertical entre les éléments de la grille */
-    grid-row-gap: 20px;
-	margin: 0 auto; /* Centre la galerie horizontalement */
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 30px;
+  margin: 0 auto; 
 }
 
-/* Les images à l'intérieur de la galerie occuperont toute la largeur disponible */
 .gallery img {
-    width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 
 
 
-
-
-
-
-
-
-/*Formulaire de contact*/
-
+/** CONTACT STYLES **/
 #contact {
-	width: 30%; /* Définit la largeur du formulaire à 50% */
-	margin: auto; /* Centre le formulaire horizontalement */
+  width: 30%;
+  margin: auto;
+  margin-top: 100px;
 }
 
 #contact > * {
-	text-align: center; /* Centre le contenu directement dans #contact */
+  text-align: center;
 }
 
 #contact h2 {
-	margin-bottom: 20px; /* Ajoute une marge en bas de 20px au titre h2 */
+  margin-bottom: 20px;
 }
 
 #contact form {
-	text-align: left; /* Aligne le texte à gauche dans le formulaire */
-	margin-top: 30px; /* Ajoute une marge en haut de 30px au formulaire */
-	display: flex; /* Utilise le modèle de boîte flexible */
-	flex-direction: column; /* Aligne les éléments en colonne */
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 #contact input {
-	height: 50px; /* Définit la hauteur des champs de saisie à 50px */
-	font-size: 1.2em; /* Définit la taille de la police à 1.2em */
-	border: none; /* Supprime les bordures */
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09); /* Ajoute une ombre à la boîte */
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
 #contact label {
-	margin: 2em 0 1em 0; /* Définit les marges du label */
+  margin: 2em 0 1em 0;
 }
 
 #contact textarea {
-	border: none; /* Supprime les bordures du champ textarea */
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09); /* Ajoute une ombre à la boîte */
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
 input[type="submit"] {
-	font-family: 'Syne'; /* Définit la police de caractères pour le bouton soumettre */
-	font-weight: 700; /* Définit le poids de la police à 700 (gras) */
-	color: white; /* Définit la couleur du texte en blanc */
-	background-color: #1D6154; /* Définit la couleur de fond */
-	margin: 2em auto; /* Ajoute une marge en haut et en bas de 2em et centre horizontalement */
-	width: 180px; /* Définit la largeur à 180px */
-	text-align: center; /* Centre le texte dans le bouton */
-	border-radius: 60px; /* Ajoute une bordure arrondie */
-	cursor: pointer; /* Change le curseur en une main */
+    font-family: 'Syne'; /* Définit la police de caractères pour le bouton soumettre */
+    font-weight: 700; /* Définit le poids de la police à 700 (gras) */
+    color: white; /* Définit la couleur du texte en blanc */
+    background-color: #1D6154; /* Définit la couleur de fond */
+    margin: 2em auto; /* Ajoute une marge en haut et en bas de 2em et centre horizontalement */
+    height: 10px;
+    width: 180px; /* Définit la largeur à 180px */
+    text-align: center; /* Centre le texte dans le bouton */
+    border-radius: 60px; /* Ajoute une bordure arrondie */
+    cursor: pointer; /* Change le curseur en une main */
 }
 
 input[type="submit"]:active {
     background-color: black; /* Change la couleur de fond du bouton lorsqu'il est activé (cliqué) */
 }
 
+footer nav ul {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2em;
+font-size: 10px;
+  cursor: pointer; /* Change le curseur en une main */
 
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -386,41 +449,57 @@ input[type="submit"]:active {
 
 
 
+/* ADMIN ELEMENTS */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Le footer */
-
-footer nav ul {
-	display: flex;
-	justify-content: flex-end;
-	margin: 2em
+.edit-link {
+  margin-top: 105px; /* Ajoute de l'espace en haut de la classe */
 }
-  
+
+.edit-bar {
+  width: 100%;
+  height: 40px;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 21px;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+  text-align: center;
+}
 
 
 
 
+#introduction figure {
+  display: flex;
+  flex-direction: column;
+}
+#introduction a {
+  margin: 16px 0 0 57px;
+}
 
+.portfolio-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 31px;
+  margin-bottom: 1em;
+}
 
+.edit-link {
+  text-decoration: none;
+  color: #000000;
+}
 
-
-
-
+.edit-link i {
+  padding-right: 8px;
+}
 
 
 
