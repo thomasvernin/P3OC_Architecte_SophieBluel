@@ -32,7 +32,62 @@
     </nav>
 </header>
 <main>
-    
+    <aside id="modal" class="modal modal-non-active" aria-hidden="true" aria-modal="false">
+        <!-- Boîte modale 1 pour la galerie photo -->
+        <div class="modal-box-galerie-photo js-modal-stop modal-non-active">
+            <!-- Bouton de fermeture de la modale -->
+            <div class="modal-close">
+                <img src="assets/icons/close-icon.svg" alt="icone fermer" class="close-icon" />
+            </div>
+            <!-- Contenu de la modale -->
+            <div class="modal-content">
+                <h2 class="modal-title">Galerie photo</h2>
+                <!-- Emplacement pour les projets de la galerie -->
+                <div class="modal-gallery">
+                    <!-- Les projets seront insérés ici -->
+                </div>
+                <!-- Bouton pour ajouter une photo -->
+                <button id="add-photo-button1">Ajouter une photo</button>
+            </div>
+        </div>
+        <!-- Boîte modale 2 pour ajouter une photo -->
+        <div class="modal-box-ajout-photo js-modal-stop modal-non-active">
+            <!-- Bouton de fermeture de la modale -->
+            <div class="modal-close">
+                <img src="assets/icons/back-icon.svg" alt="icone retour arrière" class="back-icon" />
+                <img src="assets/icons/close-icon.svg" alt="icone fermer" class="close-icon-2" />
+            </div>
+            <!-- Contenu de la modale -->
+            <div class="modal-content">
+                <h2 class="modal-title">Ajout photo</h2>
+                <!-- Formulaire pour ajouter une photo -->
+                <form action="post" id="ajout-box">
+                    <!-- Boîte pour télécharger la photo -->
+                    <div class="upload-photo-box">
+                        <img src="assets/icons/image-regular.svg" alt="icone image" class="picture-icon" />
+                        <label for="image" class="photo-upload-button"> + Ajouter photo</label>
+                        <input id="image" name="image" type="file" accept=".png, .jpg, .jpeg" />
+                        <p class="type-files">jpg, png : 4mo max</p>
+                    </div>
+                    <!-- Messages d'erreur pour le formulaire -->
+                    <p id="error-img" class="error-form"></p>
+                    <label for="title" class="labelTitle">Titre</label>
+                    <input type="text" name="title" id="title" />
+                    <p id="error-title" class="error-form"></p>
+                    <label for="category" class="labelCat">Catégorie</label>
+                    <select name="category" id="category">
+                        <option label=" " hidden disabled selected value></option>
+                    </select>
+                    <p id="error-category" class="error-form"></p>
+                    <!-- Bouton de validation -->
+                    <div class="validate">
+                        <button id="valider-button">Valider</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </aside>
+
     <!-- Section d'introduction -->
     <section id="introduction">
         <figure>
@@ -89,6 +144,17 @@
 <script defer src="./assets/index.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

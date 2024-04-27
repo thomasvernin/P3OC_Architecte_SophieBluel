@@ -212,7 +212,17 @@ main();
 
 
 
-
+// OBTENIR LA MODALE DANS LA BALISE ASIDE
+// Utilisation de <aside> pour représenter du contenu supplémentaire indirectement lié au contenu principal de la page.) 
+const asideModal = document.querySelector("#modal");
+// Obtenir la boîte modale de la galerie de photos = Modale 1
+const galerieModal = document.querySelector(".modal-box-galerie-photo");
+// Obtenir la galerie de la modale 1
+const modalGallery = document.querySelector(".modal-gallery");
+// Obtenir la boîte modale d'ajout de photo = Modale 2
+const ajoutModal = document.querySelector(".modal-box-ajout-photo");
+// Obtenir le sélecteur du formulaire d'ajout de photo
+const selectForm = document.querySelector("#category");
 
 
 
@@ -351,6 +361,46 @@ modalLink.addEventListener("click", openModal);
 
 
 
+// FONCTION POUR CREER UN PROJET DANS LA MODALE 
+const createModalProject = (project) => {
+    // Crée un élément <figure> pour le projet
+    const figureModalProject = document.createElement("figure");
+    figureModalProject.setAttribute("data-id", project.id);
+
+    // Crée un élément <img> pour afficher l'image du projet
+    const imageModalProject = document.createElement("img");
+    imageModalProject.src = project.imageUrl;
+    imageModalProject.alt = project.title;
+    imageModalProject.classList.add("modal-project-img");
+
+    // Crée une icône "trash" pour supprimer le projet
+    const trashIcon = document.createElement("img");
+    trashIcon.src = "assets/icons/trash-icon.svg";
+    trashIcon.classList.add("trash-icon");
+    trashIcon.setAttribute("data-id", project.id);
+    let trashIconID = trashIcon.getAttribute("data-id");
+
+    // Ajoute un écouteur d'événements pour le clic sur l'icône "trash"
+    trashIcon.addEventListener("click", function (event) {
+        event.preventDefault();
+        // Demande confirmation avant de supprimer le projet
+        if (confirm("Êtes-vous sûr de vouloir supprimer ce projet ?") == true) {
+            deleteWork(trashIconID);
+        }
+    });
+
+
+    // Crée un élément <figcaption> pour afficher le titre du projet
+    const figcaptionModalProject = document.createElement("figcaption");
+  
+    // Ajoute les éléments créés au <figure> du projet
+    figureModalProject.appendChild(imageModalProject);
+    figureModalProject.appendChild(trashIcon);
+    
+    figureModalProject.appendChild(figcaptionModalProject);
+    // Ajoute le <figure> du projet à la galerie modale
+    modalGallery.appendChild(figureModalProject);
+};
 
 
 
@@ -358,6 +408,279 @@ modalLink.addEventListener("click", openModal);
 
 
 
+// FORMULAIRE AJOUT PROJET 
+// Sélection des éléments du formulaire
+const formAddWork = document.querySelector("#ajout-box");
+const inputElement = document.querySelector("#title");
+const selectElement = document.querySelector("#category");
+const fileInputElement = document.querySelector("#image");
+const submitButton = document.querySelector("#valider-button");
+const inputFile = document.querySelector("#image");
+
+// Fonction pour afficher la prévisualisation de l'image à télécharger
+const showFile = (e) => {
+  e.preventDefault();
+
+  // Fonction apparition image 
+  const reader = new FileReader();
+  // Lecture de l'image
+  reader.readAsDataURL(inputFile.files[0]);
+  // Renvoie la src dans la balise preview
+  reader.addEventListener("load", function () {
+    previewImage.src = reader.result;
+  });
+  // A l'upload, on fait apparaitre la preview de l'image
+  const previewBox = document.querySelector(".upload-photo-box");
+  const previewImage = document.createElement("img");
+  previewImage.setAttribute("id", "preview-image");
+  // On masque les éléments en dessous
+  const photoUploadButton = document.querySelector(".photo-upload-button");
+  photoUploadButton.style.display = "none";
+  const pictureIcon = document.querySelector(".picture-icon");
+  pictureIcon.style.display = "none";
+  const typeFiles = document.querySelector(".type-files");
+  typeFiles.style.display = "none";
+
+  previewBox.appendChild(previewImage);
+};
+
+
+
+
+
+
+
+// Fonction de vérification des champs et "activer" le bouton de validation
+const checkForm = () => {
+    // Vérifie si les champs input, select et file sont remplis
+    if (inputElement.value !== "" && selectElement.value !== "" && fileInputElement.value !== "") {
+      // Si tous les champs sont remplis, active le bouton de soumission en changeant son style
+      submitButton.style.backgroundColor = "#1D6154";
+      submitButton.style.color = "#ffffff";
+    } else {
+      // Si un ou plusieurs champs sont vides, affiche un message dans la console
+      return console.log("Formulaire incomplet");
+    }
+};
+  
+
+
+
+
+
+
+// Listener des actions des éléments du formulaire
+inputFile.addEventListener("change", showFile); // pour détecter les changements dans le champ de fichier et exécuter la fonction showFile
+inputElement.addEventListener("input", checkForm); // pour détecter les saisies dans le champ de texte et exécuter la fonction checkForm
+selectElement.addEventListener("input", checkForm); // pour détecter les sélections dans le champ de sélection et exécuter la fonction checkForm
+fileInputElement.addEventListener("change", checkForm); // pour détecter les changements dans le champ de fichier et exécuter la fonction checkForm
+
+
+
+
+
+
+
+
+// AJOUTER UN NOUVEAU PROJET 
+const addWork = async () => {
+
+// Récupération des éléments du formuaire à envoyer à l'API
+let getPhoto = document.getElementById("image").files[0];
+let getTitle = document.getElementById("title").value;
+let getCategory = document.getElementById("category").value;
+
+
+
+/*Construction du formData à envoyer. C'est une interface JavaScript permettant de créer et de manipuler
+facilement des données de formulaire pour les envoyer via des requêtes HTTP */
+let formData = new FormData();
+formData.append("image", getPhoto);
+formData.append("title", getTitle);
+formData.append("category", getCategory);
+
+
+
+
+
+
+
+// APPEL DE L'API
+  await fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + token,
+      Accept: "application/json",
+    },
+    body: formData,
+  })
+    .then((response) => {
+      if (response.ok) {
+        getWorks(); // On actualise les galeries portfolio + modale
+        closeModal(); // On ferme la modale
+        console.log("Votre projet a bien été ajouté !");
+        return response.json();
+      } else {
+        console.log("Erreur dans la récupération des donnés de l'API");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+
+
+
+
+
+
+
+//FONCTION POUR VERIFIER SI TOUS LES ELEMENTS REQUIS ONT UNE VALEUR
+const validateForm = (e) => {
+  e.preventDefault();
+
+  // Get messages
+  const errMessImg = document.querySelector("#error-img");
+  const errMessTitle = document.querySelector("#error-title");
+  const errMessCat = document.querySelector("#error-category");
+
+  // Si tous les champs sont remplis, on exécute le addWork
+  // La fonction addWork() est appelée pour effectuer l'action d'ajouter la photo
+  if (inputElement.value !== "" && selectElement.value !== "" && fileInputElement.value !== "") {
+    addWork();
+  }
+
+  // Si champs non rempli, affichage des messages d'erreur conrrespondants
+  if (inputFile.value == "") {
+    errMessImg.innerHTML = "Image obligatoire";
+  } else {
+    errMessImg.innerHTML = "";
+  }
+  if (inputElement.value == "") {
+    errMessTitle.innerHTML = "Titre obligatoire";
+  } else {
+    errMessTitle.innerHTML = "";
+  }
+  if (selectElement.value == "") {
+    errMessCat.innerHTML = "Catégorie obligatoire";
+  } else {
+    errMessCat.innerHTML = "";
+  }
+};
+
+
+
+
+
+
+
+
+
+// OUVERTURE DE LA MODALE + ACTION DES DIFFERENTS BOUTON 
+const openModal = () => {
+    // Active aside
+    asideModal.classList.remove("modal-non-active");
+    asideModal.setAttribute("aria-hidden", "false");
+    // Active modal 1
+    galerieModal.classList.remove("modal-non-active");
+  
+    // Au click sur "Ajouter une photo" > active modale 2
+    const addButton1 = document.querySelector("#add-photo-button1");
+    addButton1.addEventListener("click", (event) => {
+      // Ajout modal-non-active sur galerie box (modale 1)
+      galerieModal.classList.add("modal-non-active");
+      // Remove modal-non-active sur ajout box (modale 2)
+      ajoutModal.classList.remove("modal-non-active");
+      // Fermeture de la modale sur croix de modale  2
+      const closeIcon2 = document.querySelector(".close-icon-2");
+      closeIcon2.addEventListener("click", closeModal);
+      // Bouton back, reviens sur modale 1
+      const backIcon = document.querySelector(".back-icon");
+      backIcon.addEventListener("click", (event) => {
+      //ajout modal-non-active sur galerie box
+      galerieModal.classList.remove("modal-non-active");
+      //remove modal-non-active sur ajout box
+      ajoutModal.classList.add("modal-non-active");
+      });
+    });
+
+     //Au click sur bouton "Valider" (modale 2),
+     //on verifie le form (validateForm ; qui exectue ou non le addWork)
+     //document.querySelector("#valider-button").addEventListener("click", validateForm);
+     formAddWork.addEventListener("submit", validateForm);
+
+     // FERMETURE DE LA MODALER SUR LA CROIX
+     const closeIcon = document.querySelector(".close-icon");
+     closeIcon.addEventListener("click", closeModal);
+
+     // FERMETURE DE LA MODALE SUR ASIDE
+     document.getElementById("modal").addEventListener("click", (event) => {
+     if (event.target === document.getElementById("modal")) {
+      closeModal();
+     }
+     });
+
+    // RECUPERATION ET AFFICHE DES PROJETS A L'OUVERTURE DE LA MODALE
+    getWorks();
+};
+
+
+
+
+
+
+
+
+// FERMETURE DE LA MODALE
+const closeModal = () => {
+    asideModal.classList.add("modal-non-active");
+    galerieModal.classList.add("modal-non-active");
+    ajoutModal.classList.add("modal-non-active");
+
+    /*--- On reset le formulaire ---*/
+    document.querySelector("#ajout-box").reset();
+    // On enlève l'image de prévisualisation
+    const previewBox = document.querySelector(".upload-photo-box");
+    const previewImage = document.querySelector("#preview-image");
+    if (previewImage !== null) {
+        previewBox.removeChild(previewImage);
+    }
+
+    // on réaffiche les éléments de pictureBox
+    const photoUploadButton = document.querySelector(".photo-upload-button");
+    photoUploadButton.style.display = "";
+    const pictureIcon = document.querySelector(".picture-icon");
+    pictureIcon.style.display = "";
+    const typeFiles = document.querySelector(".type-files");
+    typeFiles.style.display = "";
+
+    // on reinitialise le bouton valider
+    submitButton.style.backgroundColor = "#a7a7a7";
+};
+
+
+
+
+
+
+// FONCTION POUR SUPPRIMER UN PROJET DE LA MODALE
+const deleteWork = async (workID) => {
+    await fetch("http://localhost:5678/api/works/" + workID, {
+        // Appel de l'API pour supprimer le projet avec l'ID spécifié
+        method: "DELETE", // Utilisation de la méthode DELETE pour supprimer le projet
+        headers: {
+            "Content-Type": "application/json", // Spécification du type de contenu comme JSON dans les entêtes de la requête
+            Authorization: "Bearer " + token, // Inclusion du jeton d'authentification dans les entêtes de la requête
+        },
+    }).catch((error) => {
+        // Gestion des erreurs en cas d'échec de la requête
+        console.log(error); // Affichage de l'erreur dans la console
+    });
+
+    // Actualisation de l'affichage des projets après la suppression
+    getWorks();
+};
 
 
 
