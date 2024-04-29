@@ -32,6 +32,10 @@
     </nav>
 </header>
 <main>
+    <!--  La balise <aside> est utilisée pour indiquer qu'il s'agit d'un contenu
+    complémentaire ou secondaire par rapport au contenu principal de la page -->
+
+    <!-- Le " modal modal-non-active" permet de cacher la modale 2 -->
     <aside id="modal" class="modal modal-non-active" aria-hidden="true" aria-modal="false">
         <!-- Boîte modale 1 pour la galerie photo -->
         <div class="modal-box-galerie-photo js-modal-stop modal-non-active">
@@ -51,7 +55,8 @@
             </div>
         </div>
         <!-- Boîte modale 2 pour ajouter une photo -->
-        <div class="modal-box-ajout-photo js-modal-stop modal-non-active">
+        <!-- "js-modal-stop" est utilisé pour contrôler le comportement de la boîte modale via JavaScript -->
+        <div class="modal-box-ajout-photo  modal-non-active">
             <!-- Bouton de fermeture de la modale -->
             <div class="modal-close">
                 <img src="assets/icons/back-icon.svg" alt="icone retour arrière" class="back-icon" />

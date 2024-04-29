@@ -14,10 +14,6 @@ const navFilters = document.querySelector(".filters-nav");
 
 
 
-
-
-
-
 // Fonction pour créer un projet dans la galerie
 
 // Creer un élément <figure> pour le projet
@@ -204,7 +200,10 @@ const main = async () => {
   };
 
 
-//A l'ouverture de la page, on execute la fonction main (getWorks et getCategories)
+
+//A l'ouverture de la page, on execute la fonction main (getWorks et getCategories) main(); 
+//et appel de la fonction principale pour démarrer l'application
+
 main();
 
 
@@ -268,7 +267,7 @@ window.location.href = "./index.html";
 // FONCTION POUR CREER LES ELEMENTS DU MODE ADMINISTRATEUR 
 const adminPage = () => {
 
-// Ajout de la barre du mode édition
+// Ajout de la barre du mode édition avant le body
 body.insertAdjacentHTML(
     "afterbegin",
     `<div class="edit-bar">
