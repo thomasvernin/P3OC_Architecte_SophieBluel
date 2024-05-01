@@ -9,11 +9,6 @@ const navFilters = document.querySelector(".filters-nav");
 
 
 
-
-
-
-
-
 // Fonction pour créer un projet dans la galerie
 
 // Creer un élément <figure> pour le projet
@@ -45,8 +40,6 @@ gallery.appendChild(figureProject);
 
 
 
-
-
 // FONCTION POUR CREER LES BOUTONS DES FILTRES
 
 const createButton = (category) => {
@@ -62,8 +55,6 @@ buttonFilters.innerText = category.name;
 navFilters.appendChild(buttonFilters);
 };
   
-
-
 
 
 
@@ -84,15 +75,11 @@ const createOption = (category) => {
 
 
 
-
 // Fonction utilisée pour vider le conteneur de la galerie (parent_element) avant de charger de nouvelles photos.
 const dropElement = (parent_element) => {
 // Vide le contenu de l'élément parent en définissant son innerHTML à une chaîne vide
 parent_element.innerHTML = "";
 };
-
-
-
 
 
 
@@ -129,13 +116,11 @@ const getWorks = async (categoryId) => {
                     createModalProject(project); // Créé la galerie dans la modale
                 }
             });
-        })
+        }) // Gestion des erreurs en cas d'échec de la requête
         .catch((error) => {
-            console.log(error);
+            console.log(error); // Affichage de l'erreur dans la console
         });
 };
-
-
 
 
 
@@ -191,8 +176,6 @@ const getCategories = async (category) => {
 
 
 
-
-
 // Fonction qui affiche le getWorks + on affiche toutes les catégories
 const main = async () => {
     await getWorks();
@@ -210,9 +193,8 @@ main();
 
 
 
-
 // OBTENIR LA MODALE DANS LA BALISE ASIDE
-// Utilisation de <aside> pour représenter du contenu supplémentaire indirectement lié au contenu principal de la page.) 
+// Utilisation de <aside> pour représenter du contenu supplémentaire indirectement lié au contenu principal de la page. 
 const asideModal = document.querySelector("#modal");
 // Obtenir la boîte modale de la galerie de photos = Modale 1
 const galerieModal = document.querySelector(".modal-box-galerie-photo");
@@ -222,11 +204,6 @@ const modalGallery = document.querySelector(".modal-gallery");
 const ajoutModal = document.querySelector(".modal-box-ajout-photo");
 // Obtenir le sélecteur du formulaire d'ajout de photo
 const selectForm = document.querySelector("#category");
-
-
-
-
-
 
 
 
@@ -250,13 +227,9 @@ const token = window.sessionStorage.getItem("token");
 const logOut = () => {
 // Suppression du token de sessionStorage
 sessionStorage.removeItem("token");
-// Console.log(token);
 // Redirection vers la page de connexion
 window.location.href = "./index.html";
 };
-
-
-
 
 
 
@@ -302,15 +275,6 @@ document.querySelector(".portfolio-title").style.paddingBottom = "60px";
 
 
 
-
-
-
-
-
-
-
-
-
 // Gestion bouton login / logout 
 // Récupération du bouton "login/logout"
 const logButton = document.querySelector("#logButton");
@@ -318,18 +282,6 @@ const logButton = document.querySelector("#logButton");
 logButton.innerHTML = `<a href="./index.html">logout</a>`;
 // Au clic sur le bouton on execute la fonction logout
 logButton.addEventListener("click", logOut);
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -345,18 +297,6 @@ const modalLink = document.querySelector("#open-modal");
 modalLink.addEventListener("click", openModal);
 };
 
-
-
-
-
-
-
-
-
-
-
-
-  
 
 
 
@@ -383,7 +323,7 @@ const createModalProject = (project) => {
     trashIcon.addEventListener("click", function (event) {
         event.preventDefault();
         // Demande confirmation avant de supprimer le projet
-        if (confirm("Êtes-vous sûr de vouloir supprimer ce projet ?") == true) {
+        if (confirm("Êtes-vous certain que vous souhaitez effacer ce projet ?") == true) {
             deleteWork(trashIconID);
         }
     });
@@ -404,9 +344,6 @@ const createModalProject = (project) => {
 
 
 
-
-
-
 // FORMULAIRE AJOUT PROJET 
 // Sélection des éléments du formulaire
 const formAddWork = document.querySelector("#ajout-box");
@@ -416,7 +353,7 @@ const fileInputElement = document.querySelector("#image");
 const submitButton = document.querySelector("#valider-button");
 const inputFile = document.querySelector("#image");
 
-// Fonction pour afficher la prévisualisation de l'image à télécharger
+// Fonction pour afficher la prévisualisation de l'image à télécharger sans l'actualisation de la page
 const showFile = (e) => {
   e.preventDefault();
 
@@ -447,8 +384,6 @@ const showFile = (e) => {
 
 
 
-
-
 // Fonction de vérification des champs et "activer" le bouton de validation
 const checkForm = () => {
     // Vérifie si les champs input, select et file sont remplis
@@ -466,16 +401,11 @@ const checkForm = () => {
 
 
 
-
-
 // Listener des actions des éléments du formulaire
 inputFile.addEventListener("change", showFile); // pour détecter les changements dans le champ de fichier et exécuter la fonction showFile
 inputElement.addEventListener("input", checkForm); // pour détecter les saisies dans le champ de texte et exécuter la fonction checkForm
 selectElement.addEventListener("input", checkForm); // pour détecter les sélections dans le champ de sélection et exécuter la fonction checkForm
 fileInputElement.addEventListener("change", checkForm); // pour détecter les changements dans le champ de fichier et exécuter la fonction checkForm
-
-
-
 
 
 
@@ -497,8 +427,6 @@ let formData = new FormData();
 formData.append("image", getPhoto);
 formData.append("title", getTitle);
 formData.append("category", getCategory);
-
-
 
 
 
@@ -527,9 +455,6 @@ formData.append("category", getCategory);
       console.log(error);
     });
 };
-
-
-
 
 
 
@@ -567,9 +492,6 @@ const validateForm = (e) => {
     errMessCat.innerHTML = "";
   }
 };
-
-
-
 
 
 
@@ -623,9 +545,6 @@ const openModal = () => {
     // RECUPERATION ET AFFICHE DES PROJETS A L'OUVERTURE DE LA MODALE
     getWorks();
 };
-
-
-
 
 
 
